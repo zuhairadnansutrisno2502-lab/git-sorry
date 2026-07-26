@@ -2,6 +2,10 @@
   "name": "git-sorry",
   "version": "1.1.0",
   "description": "A humorous Git CLI that blames a developer for a bad line of code, then makes Gemini write a dramatic apology or a theatrical roast and broadcasts it to your team chat.",
+  "author": "Xianying",
+  "repository": "github:zuhairadnansutrisno2502-lab/git-sorry",
+  "homepage": "https://github.com/zuhairadnansutrisno2502-lab/git-sorry#readme",
+  "bugs": "https://github.com/zuhairadnansutrisno2502-lab/git-sorry/issues",
   "type": "module",
   "bin": {
     "git-sorry": "dist/index.js"
