@@ -37,7 +37,8 @@ export async function generateMessage(apiKey: string, prompt: string): Promise<s
 
   for (let attempt = 0; ; attempt++) {
     try {
-      const result = await ai.models.generateContent({ model: "gemini-2.5-flash", contents: prompt });
+      // The alias, not a pinned version: Google retires pinned models for new keys.
+      const result = await ai.models.generateContent({ model: "gemini-flash-latest", contents: prompt });
       const text = result.text?.trim();
       if (!text) {
         // A roast now and then trips the safety filter, which comes back with no text.
