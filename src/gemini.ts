@@ -23,21 +23,34 @@ export function buildPrompt(currentUser: string, blame: BlameInfo, isSelf: boole
   );
 }
 
-/** Generate the message with Gemini. Throws on API/auth/network failure. */
+/** Overload, rate limit and network blips are worth another go; a bad key never is. */
+export function isTransient(err: unknown): boolean {
+  const msg = (err as Error)?.message ?? String(err);
+  return /\b(429|500|502|503|504)\b|overloaded|unavailable|timed? ?out|ECONNRESET|ENOTFOUND|fetch failed/i.test(msg);
+}
+
+const RETRY_DELAYS_MS = [500, 1500];
+
+/** Generate the message with Gemini, retrying transient failures. Throws otherwise. */
 export async function generateMessage(apiKey: string, prompt: string): Promise<string> {
   const ai = new GoogleGenAI({ apiKey });
-  let result;
-  try {
-    result = await ai.models.generateContent({ model: "gemini-2.5-flash", contents: prompt });
-  } catch (err) {
-    throw new Error(`Gemini request failed: ${cleanApiError(err)}`);
+
+  for (let attempt = 0; ; attempt++) {
+    try {
+      const result = await ai.models.generateContent({ model: "gemini-2.5-flash", contents: prompt });
+      const text = result.text?.trim();
+      if (!text) {
+        // A roast now and then trips the safety filter, which comes back with no text.
+        throw new Error("Gemini returned an empty message (the request may have been blocked). Try again.");
+      }
+      return text;
+    } catch (err) {
+      if (attempt >= RETRY_DELAYS_MS.length || !isTransient(err)) {
+        throw new Error(`Gemini request failed: ${cleanApiError(err)}`);
+      }
+      await new Promise((r) => setTimeout(r, RETRY_DELAYS_MS[attempt]));
+    }
   }
-  const text = result.text?.trim();
-  if (!text) {
-    // A roast now and then trips the safety filter, which comes back with no text.
-    throw new Error("Gemini returned an empty message (the request may have been blocked). Try again.");
-  }
-  return text;
 }
 
 /** The SDK stuffs the whole API JSON into the error message; pull out just the human line. */

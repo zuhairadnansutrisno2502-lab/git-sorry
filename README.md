@@ -134,6 +134,9 @@ src/
 ## Notes
 
 - Native `fetch` is used for the webhook, so no HTTP client dependency.
+- When Gemini is overloaded or the network hiccups, the call is retried twice
+  before giving up. A rejected API key fails straight away, since no amount of
+  retrying will fix it.
 - Config lives in a plain JSON file, so no extra config library.
 - The one payload trick keeps Slack and Discord support to a single request.
 
