@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { createRequire } from "node:module";
 import boxen from "boxen";
 import chalk from "chalk";
 import { Command } from "commander";
@@ -7,12 +8,15 @@ import { blameLine, currentUserName } from "./git.js";
 import { buildPrompt, generateMessage } from "./gemini.js";
 import { broadcast } from "./webhook.js";
 
+// Read the version off package.json so it never drifts from the published one.
+const { version } = createRequire(import.meta.url)("../package.json") as { version: string };
+
 const program = new Command();
 
 program
   .name("git-sorry")
   .description("Blame a developer for a bad line, let Gemini apologize or roast them, then broadcast it to your team.")
-  .version("1.0.0");
+  .version(version);
 
 program
   .command("config")
