@@ -11,6 +11,8 @@
 
 ## What it does
 
+<img src="docs/mascot.svg" align="right" width="250" alt="Snitchy, the git-sorry mascot, pointing at someone else's code while making an announcement on a megaphone">
+
 We have all shipped a line of code we are not proud of. `git-sorry` finds out
 who wrote it and turns the moment into a bit of theatre.
 
@@ -23,6 +25,13 @@ goes straight to your team on Slack or Discord.
 
 It is a joke tool with a real workflow underneath. Bring your own keys, keep
 them on your machine, and let the drama begin.
+
+The character on the right is **Snitchy**, the project mascot. Snitchy reads
+`git blame` so it can tell everyone, points at whoever wrote the line, and has
+never once felt bad about it. Ten percent remorse, ninety percent main
+character. Every `blame` you run keeps Snitchy fed.
+
+<br clear="right">
 
 ## A look at it
 
@@ -37,6 +46,19 @@ When the bad line belongs to someone else:
 <p align="center">
   <img src="docs/demo-roast.svg" alt="Example roast output" width="100%">
 </p>
+
+## The numbers
+
+Team stress, measured before and after adopting git-sorry. Sample size: one
+team that talks too much. Methodology: vibes. Findings: conclusive.
+
+<p align="center">
+  <img src="docs/stress-chart.svg" alt="Hand-drawn chart of developer stress during an incident, dropping sharply the moment the git-sorry roast lands in the channel" width="100%">
+</p>
+
+Same bug, same culprit, very different afternoon. Stress falls off a cliff the
+moment the roast hits the channel, because nobody can stay angry at a line of
+code while the whole team is rating an apology out of ten.
 
 ## Install
 
@@ -107,6 +129,14 @@ npm test
 
 npm unlink -g git-sorry
 ```
+
+## Overheard after installing
+
+> "I got roasted in #general and honestly, fair." — a backend developer, still employed
+
+> "The apology it wrote was more sincere than the one I was drafting." — somebody's tech lead
+
+> "10/10, would get snitched on again." — the intern
 
 ## How it works
 

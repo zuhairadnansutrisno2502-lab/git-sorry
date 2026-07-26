@@ -1,0 +1,46 @@
+<svg width="860" height="460" viewBox="0 0 860 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hand-drawn chart: developer stress keeps climbing during an incident without git-sorry, but drops sharply the moment the git-sorry roast lands in the team channel">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a1b26"/>
+      <stop offset="1" stop-color="#24283b"/>
+    </linearGradient>
+  </defs>
+  <rect width="860" height="460" rx="18" fill="url(#bg)"/>
+
+  <g font-family="'Comic Sans MS','Chalkboard SE','Comic Neue','Segoe Print',cursive">
+    <text x="430" y="44" text-anchor="middle" font-size="25" font-weight="700" fill="#c0caf5" transform="rotate(-0.6 430 44)">developer stress during a code incident</text>
+    <text x="430" y="70" text-anchor="middle" font-size="14" fill="#7f88b3">(peer reviewed by the group chat)</text>
+
+    <!-- axes -->
+    <polyline points="90,100 91.5,145 89.5,190 90.8,235 89.3,280 90.6,325 90,370" fill="none" stroke="#c0caf5" stroke-width="2.5" stroke-linecap="round"/>
+    <polyline points="90,370 150,371.2 210,369.4 270,370.8 330,369.6 390,370.9 450,369.3 510,370.6 570,369.8 630,370.7 690,369.5 750,370.4 810,370" fill="none" stroke="#c0caf5" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 90 100 L 84 110 M 90 100 L 96 110 M 810 370 L 800 364 M 810 370 L 800 376" stroke="#c0caf5" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="44" y="245" font-size="18" fill="#c0caf5" text-anchor="middle" transform="rotate(-90 44 245)">stress</text>
+    <text x="450" y="408" font-size="16" fill="#c0caf5" text-anchor="middle" transform="rotate(-0.5 450 408)">minutes since someone said &#8220;who wrote this&#8221;</text>
+
+    <!-- without git-sorry -->
+    <polyline points="95,353 128,346 160,339 194,327 228,319 262,302 296,292 330,274 364,264 398,250 432,241 466,224 500,213 534,203 568,187 602,180 636,163 668,153 700,141 732,131 762,124 790,116"
+              fill="none" stroke="#f7768e" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="612" y="146" font-size="17" fill="#f7768e" transform="rotate(-10 612 146)">without git-sorry</text>
+
+    <!-- with git-sorry -->
+    <polyline points="95,355 130,346 165,336 200,320 235,299 268,272 298,241 323,211 344,186 359,168 371,157 382,152 393,159 403,181 416,216 431,256 450,291 474,314 502,330 528,340 552,335 576,343 600,337 624,344 648,338 672,345 696,340 720,346 744,341 768,347 790,344"
+              fill="none" stroke="#9ece6a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="738" y="318" font-size="17" fill="#9ece6a" text-anchor="middle" transform="rotate(-2 738 318)">with git-sorry</text>
+
+    <!-- peak marker -->
+    <polyline points="382,158 381,210 383,265 382,320 382,366" fill="none" stroke="#565f89" stroke-width="1.5" stroke-dasharray="5 7" opacity="0.8"/>
+
+    <!-- annotations -->
+    <text x="158" y="300" font-size="14" fill="#c0caf5" text-anchor="middle" transform="rotate(-2 158 300)">bug discovered</text>
+    <path d="M 148 308 C 138 320 128 331 120 342 M 120 342 L 117 333 M 120 342 L 127 337" fill="none" stroke="#7f88b3" stroke-width="2" stroke-linecap="round"/>
+
+    <text x="388" y="118" font-size="15" fill="#c0caf5" text-anchor="middle" transform="rotate(-2 388 118)">the roast lands in #general</text>
+    <path d="M 388 126 C 387 132 385 138 384 145 M 384 145 L 380 138 M 384 145 L 389 139" fill="none" stroke="#7f88b3" stroke-width="2" stroke-linecap="round"/>
+
+    <text x="618" y="262" font-size="15" fill="#c0caf5" text-anchor="middle" transform="rotate(-2 618 262)">everyone laughing, nobody fired</text>
+    <path d="M 610 272 C 604 292 598 314 595 328 M 595 328 L 590 321 M 595 328 L 601 322" fill="none" stroke="#7f88b3" stroke-width="2" stroke-linecap="round"/>
+
+    <text x="800" y="440" font-size="12" fill="#565f89" text-anchor="end" transform="rotate(-1 800 440)">n = 1 team, p = who cares, vibes = significant</text>
+  </g>
+</svg>
