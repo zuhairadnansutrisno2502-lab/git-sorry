@@ -11,7 +11,7 @@ const program = new Command();
 
 program
   .name("git-sorry")
-  .description("Blame a developer for a bad line, then let Gemini apologize or roast them — and broadcast it to your team.")
+  .description("Blame a developer for a bad line, let Gemini apologize or roast them, then broadcast it to your team.")
   .version("1.0.0");
 
 program
@@ -76,8 +76,8 @@ async function runBlame(filepath: string, lineArg: string): Promise<void> {
   const isSelf = me !== "" && me === blame.author;
   console.log(
     chalk.dim(
-      `Blamed ${chalk.bold(blame.author)} (${blame.date}) — ` +
-        (isSelf ? "that's you. Time to apologize." : "time for a call-out."),
+      `Blamed ${chalk.bold(blame.author)} (${blame.date}). ` +
+        (isSelf ? "That's you. Time to apologize." : "Time for a call-out."),
     ),
   );
 

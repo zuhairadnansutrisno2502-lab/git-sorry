@@ -1,0 +1,32 @@
+<svg width="820" height="372" viewBox="0 0 820 372" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="git-sorry apology example">
+  <style>
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .t { font-size: 15px; }
+  </style>
+  <rect width="820" height="372" rx="12" fill="#1a1b26"/>
+  <rect width="820" height="40" rx="12" fill="#24283b"/>
+  <rect y="28" width="820" height="12" fill="#24283b"/>
+  <circle cx="26" cy="20" r="6" fill="#f7768e"/>
+  <circle cx="48" cy="20" r="6" fill="#e0af68"/>
+  <circle cx="70" cy="20" r="6" fill="#9ece6a"/>
+  <text x="410" y="25" text-anchor="middle" class="mono" font-size="13" fill="#7f88b3">git-sorry blame</text>
+
+  <text x="24" y="70" class="mono t">
+    <tspan fill="#9ece6a">➜</tspan><tspan fill="#7dcfff">  ~/my-project </tspan><tspan fill="#c0caf5">git-sorry blame src/auth.ts 42</tspan>
+  </text>
+  <text x="24" y="95" class="mono t" fill="#565f89">Blamed Xianying (2026-07-26). That's you. Time to apologize.</text>
+  <text x="24" y="120" class="mono t" fill="#565f89">Summoning Gemini...</text>
+
+  <rect x="40" y="140" width="740" height="176" rx="8" fill="none" stroke="#e0af68" stroke-width="1.5"/>
+  <rect x="60" y="132" width="180" height="16" fill="#1a1b26"/>
+  <text x="68" y="145" class="mono" font-size="14" fill="#e0af68">🙏 A Humble Apology</text>
+
+  <text x="64" y="176" class="mono t" fill="#c0caf5">O cursed hour, o trembling hand that typed this shame.</text>
+  <text x="64" y="200" class="mono t" fill="#c0caf5">I, Xianying, did birth a line so foul the linter wept</text>
+  <text x="64" y="224" class="mono t" fill="#c0caf5">and the reviewer sighed. Behold my crime laid bare,</text>
+  <text x="64" y="248" class="mono t" fill="#c0caf5">and know that I repent. Upon this keyboard I do swear</text>
+  <text x="64" y="272" class="mono t" fill="#c0caf5">to never let such folly pass again. Mercy, good</text>
+  <text x="64" y="296" class="mono t" fill="#c0caf5">reviewer, mercy. I shall atone in tests evermore.</text>
+
+  <text x="24" y="348" class="mono t" fill="#9ece6a">✓ Broadcast to your team.</text>
+</svg>
