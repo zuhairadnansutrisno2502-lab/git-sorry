@@ -33,59 +33,71 @@ program
     console.log(chalk.dim(`  (stored in ${CONFIG_PATH})`));
   });
 
+interface BlameOpts {
+  roast?: boolean;
+  apology?: boolean;
+  dryRun?: boolean;
+}
+
 program
   .command("blame")
   .description("Blame a line of code and broadcast a dramatic apology or roast.")
   .argument("<filepath>", "path to the file")
   .argument("<line_number>", "line number to blame")
-  .action(async (filepath: string, lineArg: string) => {
+  .option("--roast", "force a roast, whoever wrote the line")
+  .option("--apology", "force a grovelling apology")
+  .option("--dry-run", "generate and print the message, but don't broadcast it")
+  .action(async (filepath: string, lineArg: string, opts: BlameOpts) => {
     try {
-      await runBlame(filepath, lineArg);
+      await runBlame(filepath, lineArg, opts);
     } catch (err) {
       console.error(chalk.red(`\n✗ ${(err as Error).message}`));
       process.exitCode = 1;
     }
   });
 
-async function runBlame(filepath: string, lineArg: string): Promise<void> {
+async function runBlame(filepath: string, lineArg: string, opts: BlameOpts): Promise<void> {
   const lineNumber = Number(lineArg);
   if (!Number.isInteger(lineNumber) || lineNumber < 1) {
     throw new Error(`Invalid line number: "${lineArg}". Give a positive integer.`);
   }
+  if (opts.roast && opts.apology) {
+    throw new Error("Pick one: --roast or --apology, not both.");
+  }
 
-  // Step A: config present?
+  // A key is always needed; the webhook only matters when we actually broadcast.
   const { geminiApiKey, webhookUrl } = await loadConfig();
-  if (!geminiApiKey || !webhookUrl) {
-    const missing = [!geminiApiKey && "Gemini API key", !webhookUrl && "webhook URL"]
-      .filter(Boolean)
-      .join(" and ");
+  if (!geminiApiKey) {
     throw new Error(
-      `Missing ${missing}. Set them first:\n` +
-        chalk.cyan("  git-sorry config --set-key <GEMINI_API_KEY>\n") +
+      "Missing Gemini API key. Set it first:\n" +
+        chalk.cyan("  git-sorry config --set-key <GEMINI_API_KEY>"),
+    );
+  }
+  if (!opts.dryRun && !webhookUrl) {
+    throw new Error(
+      "Missing webhook URL. Set it, or use --dry-run to skip broadcasting:\n" +
         chalk.cyan("  git-sorry config --set-webhook <URL>"),
     );
   }
 
-  // Steps B + C: current user and blame info.
+  // Who's running this, and who's on the hook for the line.
   const [me, blame] = await Promise.all([
     currentUserName(),
     blameLine(filepath, lineNumber),
   ]);
 
-  // Step D: is the culprit me?
-  const isSelf = me !== "" && me === blame.author;
+  // --apology / --roast win; otherwise it's an apology only when you blamed yourself.
+  const isSelf = opts.apology ? true : opts.roast ? false : me !== "" && me === blame.author;
   console.log(
     chalk.dim(
       `Blamed ${chalk.bold(blame.author)} (${blame.date}). ` +
-        (isSelf ? "That's you. Time to apologize." : "Time for a call-out."),
+        (isSelf ? "Time to apologize." : "Time for a call-out."),
     ),
   );
 
-  // Step E: ask Gemini.
   console.log(chalk.dim("Summoning Gemini..."));
   const message = await generateMessage(geminiApiKey, buildPrompt(me, blame, isSelf));
 
-  // Step F: pretty output.
   console.log(
     boxen(chalk.whiteBright(message), {
       title: isSelf ? "🙏 A Humble Apology" : "🔥 A Formal Roast",
@@ -96,10 +108,12 @@ async function runBlame(filepath: string, lineArg: string): Promise<void> {
     }),
   );
 
-  // Step G: broadcast.
-  await broadcast(webhookUrl, message);
+  if (opts.dryRun) {
+    console.log(chalk.dim("Dry run — nothing was broadcast."));
+    return;
+  }
 
-  // Step H: confirm.
+  await broadcast(webhookUrl!, message);
   console.log(chalk.green("✓ Broadcast to your team."));
 }
 

@@ -4,7 +4,7 @@ const git = simpleGit();
 
 export interface BlameInfo {
   author: string;
-  /** Commit date as YYYY-MM-DD (local time of the commit's author). */
+  /** Commit date as YYYY-MM-DD (UTC). */
   date: string;
   /** The exact source line that was blamed. */
   line: string;

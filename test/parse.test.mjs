@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { parseBlamePorcelain } from "../dist/git.js";
+import { buildPrompt } from "../dist/gemini.js";
 
 test("parses author, date and code from porcelain blame", () => {
   // 2021-01-01T00:00:00Z == epoch 1609459200
@@ -23,4 +24,11 @@ test("falls back gracefully when metadata is missing", () => {
   assert.equal(info.author, "Unknown");
   assert.equal(info.date, "an unknown date");
   assert.equal(info.line, "some code");
+});
+
+const blame = { author: "Jane", date: "2021-01-01", line: "eval(x)" };
+
+test("apology prompt grovels; roast prompt calls out", () => {
+  assert.match(buildPrompt("Me", blame, true), /apology/i);
+  assert.match(buildPrompt("Me", blame, false), /roast/i);
 });
