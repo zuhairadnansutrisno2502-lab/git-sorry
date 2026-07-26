@@ -1,0 +1,42 @@
+{
+  "name": "git-sorry",
+  "version": "1.0.0",
+  "description": "A humorous Git CLI that blames a developer for a bad line of code, then makes Gemini write a dramatic apology or a theatrical roast and broadcasts it to your team chat.",
+  "type": "module",
+  "bin": {
+    "git-sorry": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc && chmod +x dist/index.js",
+    "start": "node dist/index.js",
+    "test": "npm run build && node --test test/*.test.mjs"
+  },
+  "keywords": [
+    "git",
+    "blame",
+    "cli",
+    "gemini",
+    "webhook",
+    "slack",
+    "discord",
+    "humor"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "boxen": "^8.0.1",
+    "chalk": "^5.6.2",
+    "commander": "^12.1.0",
+    "simple-git": "^3.27.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}
