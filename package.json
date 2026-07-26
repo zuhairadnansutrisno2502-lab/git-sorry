@@ -1,6 +1,6 @@
 {
   "name": "git-sorry",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A humorous Git CLI that blames a developer for a bad line of code, then makes Gemini write a dramatic apology or a theatrical roast and broadcasts it to your team chat.",
   "author": "Xianying",
   "repository": {
