@@ -1,12 +1,38 @@
 <p align="center">
-  <img src="docs/banner.svg" alt="git-sorry" width="100%">
+  <img src="docs/banner.svg" alt="git-sorry — your git blame, now with feelings" width="100%">
+</p>
+
+<h3 align="center">Your git blame, now with feelings.</h3>
+
+<p align="center">
+  Blame a line of code, let AI write the apology or the roast,<br>
+  then drop it straight into your team's Slack or Discord.
 </p>
 
 <p align="center">
+  <a href="https://www.npmjs.com/package/git-sorry"><img alt="npm" src="https://img.shields.io/npm/v/git-sorry?logo=npm&logoColor=white&color=CB3837"></a>
   <img alt="Node.js" src="https://img.shields.io/badge/Node.js-18%2B-339933?logo=node.js&logoColor=white">
   <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white">
-  <img alt="Gemini" src="https://img.shields.io/badge/Gemini-2.5%20Flash-8E75B2?logo=googlegemini&logoColor=white">
+  <img alt="Gemini" src="https://img.shields.io/badge/Gemini-Flash-8E75B2?logo=googlegemini&logoColor=white">
   <img alt="License" src="https://img.shields.io/badge/License-MIT-informational">
+</p>
+
+## Try it in 30 seconds
+
+No install, no webhook, no commitment. Grab a free Gemini key from
+[Google AI Studio](https://aistudio.google.com/app/apikey), then point it at the
+worst line in your repo:
+
+```bash
+npx git-sorry config --set-key <GEMINI_API_KEY>
+npx git-sorry blame src/auth.ts 42 --dry-run
+```
+
+`--dry-run` prints the verdict in your terminal and tells nobody. Remove it once
+you are ready to involve the whole team.
+
+<p align="center">
+  <img src="docs/demo-roast.svg" alt="Example roast output: git-sorry blames a teammate for a bad line and prints a formal roast in the terminal" width="100%">
 </p>
 
 ## What it does
@@ -33,44 +59,26 @@ character. Every `blame` you run keeps Snitchy fed.
 
 <br clear="right">
 
-## A look at it
-
-When the bad line is yours:
+## When the bad line is yours
 
 <p align="center">
-  <img src="docs/demo-apology.svg" alt="Example apology output" width="100%">
+  <img src="docs/demo-apology.svg" alt="Example apology output: git-sorry catches your own bad line and prints a grovelling apology in the terminal" width="100%">
 </p>
-
-When the bad line belongs to someone else:
-
-<p align="center">
-  <img src="docs/demo-roast.svg" alt="Example roast output" width="100%">
-</p>
-
-## The numbers
-
-Team stress, measured before and after adopting git-sorry. Sample size: one
-team that talks too much. Methodology: vibes. Findings: conclusive.
-
-<p align="center">
-  <img src="docs/stress-chart.svg" alt="Hand-drawn chart of developer stress during an incident, dropping sharply the moment the git-sorry roast lands in the channel" width="100%">
-</p>
-
-Same bug, same culprit, very different afternoon. Stress falls off a cliff the
-moment the roast hits the channel, because nobody can stay angry at a line of
-code while the whole team is rating an apology out of ten.
 
 ## Install
 
 ```bash
-npm install
-npm run build
+npm install -g git-sorry
 ```
+
+Or skip the install entirely and prefix every command with `npx`. Node 18 or
+newer, and a git repository with some history to blame.
 
 ## Set it up
 
-You need a Gemini API key and one webhook URL. Both stay on your machine in
-`~/.git-sorry/config.json`, saved with owner only permissions.
+You need a Gemini API key, and a webhook URL only if you want the message to
+leave your machine. Both are stored in `~/.git-sorry/config.json` with owner
+only permissions.
 
 ```bash
 git-sorry config --set-key <GEMINI_API_KEY>
@@ -114,21 +122,18 @@ git-sorry blame src/auth.ts 42 --dry-run
 git-sorry blame src/auth.ts 42 --roast
 ```
 
-## Try it locally with npm link
+## The numbers
 
-```bash
-npm install
-npm run build
-npm link
+Team stress, measured before and after adopting git-sorry. Sample size: one
+team that talks too much. Methodology: vibes. Findings: conclusive.
 
-git-sorry config --set-key <GEMINI_API_KEY>
-git-sorry config --set-webhook <URL>
-git-sorry blame path/to/file.ts 10
+<p align="center">
+  <img src="docs/stress-chart.svg" alt="Hand-drawn chart of developer stress during an incident, dropping sharply the moment the git-sorry roast lands in the channel" width="100%">
+</p>
 
-npm test
-
-npm unlink -g git-sorry
-```
+Same bug, same culprit, very different afternoon. Stress falls off a cliff the
+moment the roast hits the channel, because nobody can stay angry at a line of
+code while the whole team is rating an apology out of ten.
 
 ## Overheard after installing
 
@@ -144,7 +149,7 @@ npm unlink -g git-sorry
 2. It reads your local `git config user.name`.
 3. It runs `git blame` on the line to get the author, the date, and the code.
 4. It compares you against that author, unless `--roast` or `--apology` already made the call.
-5. It prompts Gemini 2.5 Flash for an apology or a roast.
+5. It prompts Gemini Flash for an apology or a roast.
 6. It prints the reply inside a boxen frame.
 7. It posts the reply to your webhook. Slack reads the `text` field and Discord
    reads the `content` field, so one payload covers both.
@@ -169,6 +174,22 @@ src/
   retrying will fix it.
 - Config lives in a plain JSON file, so no extra config library.
 - The one payload trick keeps Slack and Discord support to a single request.
+
+## Hack on it
+
+```bash
+git clone https://github.com/zuhairadnansutrisno2502-lab/git-sorry.git
+cd git-sorry
+npm install
+npm run build
+npm link          # now `git-sorry` runs your local build
+npm test
+```
+
+`npm unlink -g git-sorry` puts things back the way they were.
+
+Issues and pull requests are welcome, especially new personalities for the
+prompt. If the roast made you laugh, a ⭐ keeps Snitchy motivated.
 
 ## License
 

@@ -1,7 +1,7 @@
 {
   "name": "git-sorry",
   "version": "1.1.2",
-  "description": "A humorous Git CLI that blames a developer for a bad line of code, then makes Gemini write a dramatic apology or a theatrical roast and broadcasts it to your team chat.",
+  "description": "Your git blame, now with feelings. Blame a line of code, let AI write the apology or the roast, then post it to Slack or Discord.",
   "author": "Xianying",
   "repository": {
     "type": "git",
@@ -28,12 +28,21 @@
   "keywords": [
     "git",
     "blame",
+    "git-blame",
     "cli",
+    "command-line",
+    "developer-tools",
+    "ai",
+    "llm",
     "gemini",
+    "google-gemini",
     "webhook",
     "slack",
     "discord",
-    "humor"
+    "chatops",
+    "roast",
+    "humor",
+    "fun"
   ],
   "license": "MIT",
   "dependencies": {

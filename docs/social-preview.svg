@@ -1,0 +1,53 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="git-sorry social preview: your git blame, now with feelings">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a1b26"/>
+      <stop offset="1" stop-color="#24283b"/>
+    </linearGradient>
+    <linearGradient id="title" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f7768e"/>
+      <stop offset="0.5" stop-color="#e0af68"/>
+      <stop offset="1" stop-color="#7aa2f7"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7aa2f7" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#7aa2f7" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <circle cx="1090" cy="90" r="300" fill="url(#glow)"/>
+
+  <!-- title block -->
+  <text x="80" y="164" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="88" font-weight="700" fill="url(#title)">git-sorry</text>
+  <text x="84" y="216" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="32" fill="#c0caf5">Your git blame, now with feelings.</text>
+  <text x="84" y="256" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="21" fill="#7f88b3">Blame a line, let AI write the apology or the roast, then post it to Slack or Discord.</text>
+
+  <!-- terminal card -->
+  <rect x="80" y="300" width="800" height="230" rx="14" fill="#16161e" stroke="#3b4261" stroke-width="1.5"/>
+  <circle cx="110" cy="330" r="7" fill="#f7768e"/>
+  <circle cx="134" cy="330" r="7" fill="#e0af68"/>
+  <circle cx="158" cy="330" r="7" fill="#9ece6a"/>
+  <text x="186" y="336" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#565f89">zsh — git-sorry</text>
+
+  <text x="110" y="386" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="#9ece6a">$<tspan fill="#c0caf5" dx="12">npx git-sorry blame src/auth.ts 42</tspan></text>
+  <text x="110" y="420" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16" fill="#565f89">Blamed Marcus (2024-03-11). Time for a call-out.</text>
+
+  <rect x="110" y="440" width="740" height="70" rx="10" fill="#1f2030" stroke="#f7768e" stroke-width="1.5"/>
+  <text x="128" y="458" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" fill="#f7768e">A Formal Roast</text>
+  <text x="128" y="484" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17" fill="#ffffff">Marcus wrote a nested ternary three levels deep and</text>
+  <text x="128" y="504" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17" fill="#ffffff">then went on holiday. We have questions.</text>
+
+  <!-- emoji stack -->
+  <text x="1060" y="330" font-size="150" text-anchor="middle">🙏</text>
+  <text x="1160" y="430" font-size="110" text-anchor="middle">🔥</text>
+
+  <!-- footer chips -->
+  <rect x="80" y="560" width="228" height="44" rx="22" fill="#292e42" stroke="#7aa2f7" stroke-width="1.5"/>
+  <text x="194" y="589" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18" fill="#c0caf5" text-anchor="middle">npx git-sorry</text>
+  <rect x="322" y="560" width="124" height="44" rx="22" fill="#292e42"/>
+  <text x="384" y="589" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="17" fill="#c0caf5" text-anchor="middle">Node 18+</text>
+  <rect x="460" y="560" width="98" height="44" rx="22" fill="#292e42"/>
+  <text x="509" y="589" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="17" fill="#c0caf5" text-anchor="middle">MIT</text>
+  <text x="1200" y="590" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="18" fill="#565f89" text-anchor="end">github.com/zuhairadnansutrisno2502-lab/git-sorry</text>
+</svg>
