@@ -32,8 +32,10 @@ npx git-sorry blame src/auth.ts 42 --dry-run
 you are ready to involve the whole team.
 
 <p align="center">
-  <img src="docs/demo-roast.svg" alt="Example roast output: git-sorry blames a teammate for a bad line and prints a formal roast in the terminal" width="100%">
+  <img src="docs/demo.gif" alt="git-sorry blaming line 42 of src/auth.ts, finding a nested ternary written by Marcus, and printing a formal roast in the terminal" width="100%">
 </p>
+
+<p align="center"><sub>An unedited run. The roast is whatever Gemini came up with that afternoon.</sub></p>
 
 ## What it does
 
