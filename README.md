@@ -44,6 +44,24 @@ everyone. Ten percent remorse, ninety percent main character.
 
 <br clear="right">
 
+## Which one you get
+
+It checks the name on the commit against your own. Write the line yourself and
+you get something to atone with:
+
+<p align="center">
+  <img src="docs/demo-apology.png" alt="git-sorry judging a line the current user wrote, printing the evidence and a humble apology" width="100%">
+</p>
+
+Find it under somebody else's name and the tone changes:
+
+<p align="center">
+  <img src="docs/demo-roast.png" alt="git-sorry judging a line written by a teammate, printing the evidence and a formal roast" width="100%">
+</p>
+
+`--roast` and `--apology` overrule it, for when you have strong feelings about
+which one the moment deserves.
+
 ## Make it worse
 
 | Command | What happens |
