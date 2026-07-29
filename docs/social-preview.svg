@@ -21,7 +21,7 @@
   <!-- title block -->
   <text x="80" y="164" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="88" font-weight="700" fill="url(#title)">git-sorry</text>
   <text x="84" y="216" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="32" fill="#c0caf5">Your git blame, now with feelings.</text>
-  <text x="84" y="256" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="21" fill="#7f88b3">Blame a line, let AI write the apology or the roast, then post it to Slack or Discord.</text>
+  <text x="84" y="256" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="21" fill="#7f88b3">No install, no API key, no arguments. It finds your worst line on its own.</text>
 
   <!-- terminal card -->
   <rect x="80" y="300" width="800" height="230" rx="14" fill="#16161e" stroke="#3b4261" stroke-width="1.5"/>
@@ -30,13 +30,13 @@
   <circle cx="158" cy="330" r="7" fill="#9ece6a"/>
   <text x="186" y="336" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#565f89">zsh — git-sorry</text>
 
-  <text x="110" y="386" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="#9ece6a">$<tspan fill="#c0caf5" dx="12">npx git-sorry blame src/auth.ts 42</tspan></text>
-  <text x="110" y="420" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16" fill="#565f89">Blamed Marcus (2024-03-11). Time for a call-out.</text>
+  <text x="110" y="386" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="#9ece6a">$<tspan fill="#c0caf5" dx="12">npx git-sorry</tspan></text>
+  <text x="110" y="420" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16" fill="#565f89">src/auth.ts:42 · Marcus Chen · 02:47 · "quick fix, will refactor later"</text>
 
   <rect x="110" y="440" width="740" height="70" rx="10" fill="#1f2030" stroke="#f7768e" stroke-width="1.5"/>
   <text x="128" y="458" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" fill="#f7768e">A Formal Roast</text>
-  <text x="128" y="484" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17" fill="#ffffff">Marcus wrote a nested ternary three levels deep and</text>
-  <text x="128" y="504" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17" fill="#ffffff">then went on holiday. We have questions.</text>
+  <text x="128" y="484" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17" fill="#ffffff">Marcus Chen had an entire programming language</text>
+  <text x="128" y="504" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17" fill="#ffffff">available and chose a nested ternary.</text>
 
   <!-- emoji stack -->
   <text x="1060" y="330" font-size="150" text-anchor="middle">🙏</text>
