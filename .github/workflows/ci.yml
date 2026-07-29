@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [18, 20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npm test
+
+  verdicts:
+    name: lines.json is valid
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # A joke pull request should fail loudly on a stray comma, not at install time.
+      - run: node -e "const j=require('./lines.json');if(!j.roast?.length||!j.apology?.length)throw new Error('roast and apology must both be non-empty');console.log(j.roast.length+j.apology.length+' verdicts')"

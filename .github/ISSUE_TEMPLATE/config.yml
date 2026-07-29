@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Add a verdict yourself
+    url: https://github.com/zuhairadnansutrisno2502-lab/git-sorry/edit/main/lines.json
+    about: Edit lines.json in the browser and open a pull request. Takes about a minute.

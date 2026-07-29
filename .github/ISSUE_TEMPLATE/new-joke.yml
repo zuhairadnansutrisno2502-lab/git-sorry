@@ -1,0 +1,42 @@
+name: Suggest a verdict
+description: Add a roast or an apology. No code, no cloning, no git required.
+title: "Verdict: "
+labels: ["new joke", "good first issue"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Write the line you want git-sorry to say. If you would rather open the
+        pull request yourself, edit
+        [lines.json](../../edit/main/lines.json) straight in the browser — that
+        is the whole contribution process.
+
+        You can drop any of these into your text and they get filled in from
+        the real repository:
+
+        `{{author}}` `{{file}}` `{{line}}` `{{code}}` `{{charge}}` `{{age}}`
+        `{{date}}` `{{commitMsg}}` `{{hour}}` `{{weekday}}` `{{branch}}` `{{dirtyCount}}`
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Which pile does it go in?
+      options:
+        - Roast (someone else wrote the line)
+        - Apology (you wrote the line)
+    validations:
+      required: true
+  - type: textarea
+    id: text
+    attributes:
+      label: The verdict
+      description: One or two sentences. Funniest wins.
+      placeholder: '{{author}} had an entire programming language available and chose {{charge}}.'
+    validations:
+      required: true
+  - type: checkboxes
+    id: house-rules
+    attributes:
+      label: House rules
+      options:
+        - label: It punches at the code, not at a real person's identity.
+          required: true
