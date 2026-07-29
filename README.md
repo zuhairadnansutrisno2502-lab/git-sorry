@@ -1,128 +1,130 @@
 <p align="center">
-  <img src="docs/banner.svg" alt="git-sorry — your git blame, now with feelings" width="100%">
+  <img src="https://raw.githubusercontent.com/zuhairadnansutrisno2502-lab/git-sorry/main/docs/demo.gif" alt="git-sorry finding the worst line in a repository, naming the author, and printing the verdict in the terminal" width="100%">
 </p>
+
+<h1 align="center">git-sorry</h1>
 
 <h3 align="center">Your git blame, now with feelings.</h3>
 
 <p align="center">
-  Blame a line of code, let AI write the apology or the roast,<br>
-  then drop it straight into your team's Slack or Discord.
+  <code>git blame</code> tells you who. <code>git-sorry</code> tells them.
+</p>
+
+```bash
+npx git-sorry
+```
+
+<p align="center">
+  No install. No API key. No arguments. It finds your worst line on its own.<br>
+  Works offline, and in a repository you cloned nine seconds ago.
 </p>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/git-sorry"><img alt="npm" src="https://img.shields.io/npm/v/git-sorry?logo=npm&logoColor=white&color=CB3837"></a>
+  <a href="https://github.com/zuhairadnansutrisno2502-lab/git-sorry/stargazers"><img alt="stars" src="https://img.shields.io/github/stars/zuhairadnansutrisno2502-lab/git-sorry?style=flat&logo=github&color=yellow"></a>
   <img alt="Node.js" src="https://img.shields.io/badge/Node.js-18%2B-339933?logo=node.js&logoColor=white">
-  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white">
-  <img alt="Gemini" src="https://img.shields.io/badge/Gemini-Flash-8E75B2?logo=googlegemini&logoColor=white">
   <img alt="License" src="https://img.shields.io/badge/License-MIT-informational">
 </p>
 
-## Try it in 30 seconds
+## What just happened
 
-No install, no webhook, no commitment. Grab a free Gemini key from
-[Google AI Studio](https://aistudio.google.com/app/apikey), then point it at the
-worst line in your repo:
+<img src="docs/mascot.svg" align="right" width="230" alt="Snitchy, the git-sorry mascot, pointing at someone else's code while making an announcement on a megaphone">
 
-```bash
-npx git-sorry config --set-key <GEMINI_API_KEY>
-npx git-sorry blame src/auth.ts 42 --dry-run
-```
+You ran one command and it went looking for trouble. It scans the source files
+your recent commits touched, scores every line for how embarrassing it is,
+picks the winner, and reads out the charge sheet: who wrote it, when, at what
+hour of the night, and the commit message they had the nerve to attach.
 
-`--dry-run` prints the verdict in your terminal and tells nobody. Remove it once
-you are ready to involve the whole team.
+If the line turns out to be yours, you get an apology to deliver. If it belongs
+to a teammate, you get a roast. Either way nothing leaves your machine unless
+you ask it to.
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/zuhairadnansutrisno2502-lab/git-sorry/main/docs/demo.gif" alt="git-sorry blaming line 42 of src/auth.ts, finding a nested ternary written by Marcus, and printing a formal roast in the terminal" width="100%">
-</p>
-
-<p align="center"><sub>An unedited run. The roast is whatever Gemini came up with that afternoon.</sub></p>
-
-## What it does
-
-<img src="docs/mascot.svg" align="right" width="250" alt="Snitchy, the git-sorry mascot, pointing at someone else's code while making an announcement on a megaphone">
-
-We have all shipped a line of code we are not proud of. `git-sorry` finds out
-who wrote it and turns the moment into a bit of theatre.
-
-Point it at a file and a line number. It reads `git blame`, figures out whether
-the culprit is you or a teammate, and asks Gemini to write the appropriate
-response. If the line is yours, you get a dramatic apology worthy of the stage.
-If it belongs to someone else, you get a playful roast that gently demands an
-explanation. Either way the message lands in a tidy box in your terminal and
-goes straight to your team on Slack or Discord.
-
-It is a joke tool with a real workflow underneath. Bring your own keys, keep
-them on your machine, and let the drama begin.
-
-The character on the right is **Snitchy**, the project mascot. Snitchy reads
-`git blame` so it can tell everyone, points at whoever wrote the line, and has
-never once felt bad about it. Ten percent remorse, ninety percent main
-character. Every `blame` you run keeps Snitchy fed.
+The one on the right is **Snitchy**. Snitchy reads `git blame` so it can tell
+everyone. Ten percent remorse, ninety percent main character.
 
 <br clear="right">
 
-## When the bad line is yours
+## Make it worse
 
-<p align="center">
-  <img src="docs/demo-apology.svg" alt="Example apology output: git-sorry catches your own bad line and prints a grovelling apology in the terminal" width="100%">
-</p>
+| Command | What happens |
+| :--- | :--- |
+| `git-sorry` | Finds your worst recent line and passes judgement |
+| `git-sorry src/auth.ts` | Finds the worst line in that file |
+| `git-sorry src/auth.ts 42` | Judges exactly that line |
+| `git-sorry wall` | Ranks everyone in the repository by smelly lines owned |
+| `--ai` | Hands the evidence to Gemini and gets a verdict written fresh |
+| `--roast` / `--apology` | Overrules the tool on which one you deserve |
+| `--share` / `--copy` | A ready-made post, or straight to your clipboard |
+| `--send` | Also posts it to your team's Slack or Discord |
 
-## Install
+`git-sorry wall` is the one that ends friendships:
+
+```
+  🏆 HALL OF SHAME  ·  20 files swept
+
+  🥇 Marcus Chen             31 smelly lines
+       src/auth.ts — return user ? user.admin ? true : user.mod ? true : false…
+  🥈 Priya Raman             12 smelly lines
+       src/api/sync.ts — } catch (e) {}
+  🥉 you                      9 smelly lines
+       src/utils.ts — // TODO: this is temporary
+```
+
+## Add your own verdict
+
+This is the part where you come in, and it does not involve cloning anything.
+
+**[Edit `lines.json` in your browser →](../../edit/main/lines.json)** Add a
+string to `roast` or `apology`, commit it as a pull request, done. That is the
+entire contribution process.
+
+```json
+"roast": [
+  "{{author}} had an entire programming language available and chose {{charge}}."
+]
+```
+
+Anything in double braces is filled in from the real repository — `{{author}}`,
+`{{charge}}`, `{{commitMsg}}`, `{{hour}}`, `{{weekday}}`, `{{age}}`,
+`{{branch}}`, `{{dirtyCount}}` and a few more. A verdict is only ever used when
+every placeholder it names has a real value, so you can lean on them without
+writing fallbacks. The full list is in [CONTRIBUTING.md](CONTRIBUTING.md).
+
+If you would rather not touch a file at all, [open an issue with your joke in
+it](../../issues/new?template=new-joke.yml) and somebody else will land it.
+
+## Let Gemini write it
+
+The built-in verdicts are instant and work anywhere. When you want one composed
+on the spot for that exact line, add `--ai`:
+
+```bash
+npx git-sorry config --set-key <GEMINI_API_KEY>
+npx git-sorry --ai
+```
+
+Keys are free from [Google AI Studio](https://aistudio.google.com/app/apikey)
+and live in `~/.git-sorry/config.json`, owner-readable only. Gemini gets the
+line, the author, the date and the commit message, which turns out to be all
+the ammunition anyone needs.
+
+## Send it to the team
+
+```bash
+npx git-sorry config --set-webhook <SLACK_OR_DISCORD_WEBHOOK_URL>
+npx git-sorry --send
+```
+
+Nothing is broadcast unless `--send` is on the command line. Slack reads the
+`text` field and Discord reads `content`, so a single request covers both.
+
+## Install it properly
 
 ```bash
 npm install -g git-sorry
 ```
 
-Or skip the install entirely and prefix every command with `npx`. Node 18 or
-newer, and a git repository with some history to blame.
-
-## Set it up
-
-You need a Gemini API key, and a webhook URL only if you want the message to
-leave your machine. Both are stored in `~/.git-sorry/config.json` with owner
-only permissions.
-
-```bash
-git-sorry config --set-key <GEMINI_API_KEY>
-git-sorry config --set-webhook <SLACK_OR_DISCORD_WEBHOOK_URL>
-```
-
-Where to find them:
-
-| Item | Where |
-| :--- | :--- |
-| Gemini API key | https://aistudio.google.com/app/apikey |
-| Slack webhook | `https://hooks.slack.com/services/...` |
-| Discord webhook | `https://discord.com/api/webhooks/...` |
-
-## Use it
-
-```bash
-git-sorry blame <filepath> <line_number>
-```
-
-For example, to put line 42 of `src/auth.ts` on trial:
-
-```bash
-git-sorry blame src/auth.ts 42
-```
-
-If you wrote the line, expect an apology. If a teammate did, expect a roast.
-The generated message prints in your terminal and posts to your chat at the
-same time.
-
-A few flags for when you want the last word:
-
-| Flag | What it does |
-| :--- | :--- |
-| `--dry-run` | Print the message but keep it off the team channel. Handy for a first look, and it works without a webhook set. |
-| `--roast` | Roast the author no matter who wrote the line. |
-| `--apology` | Grovel instead, even if the line was not yours. |
-
-```bash
-git-sorry blame src/auth.ts 42 --dry-run
-git-sorry blame src/auth.ts 42 --roast
-```
+Node 18 or newer, and a git repository with some history to answer for.
 
 ## The numbers
 
@@ -137,7 +139,7 @@ Same bug, same culprit, very different afternoon. Stress falls off a cliff the
 moment the roast hits the channel, because nobody can stay angry at a line of
 code while the whole team is rating an apology out of ten.
 
-## Overheard after installing
+## Reviews from developers who do not exist
 
 > "I got roasted in #general and honestly, fair." — a backend developer, still employed
 
@@ -147,51 +149,41 @@ code while the whole team is rating an apology out of ten.
 
 ## How it works
 
-1. It checks that your Gemini key is set, and your webhook too unless you passed `--dry-run`.
-2. It reads your local `git config user.name`.
-3. It runs `git blame` on the line to get the author, the date, and the code.
-4. It compares you against that author, unless `--roast` or `--apology` already made the call.
-5. It prompts Gemini Flash for an apology or a roast.
-6. It prints the reply inside a boxen frame.
-7. It posts the reply to your webhook. Slack reads the `text` field and Discord
-   reads the `content` field, so one payload covers both.
-8. It confirms the broadcast.
+It reads the files your recent commits touched, scores each line against a
+table of known offences — nested ternaries, empty catch blocks, `eval`, a
+`TODO` that has outlived its author's optimism — and puts the highest scorer on
+trial. `git blame` supplies the name and date, `git show` supplies the commit
+message and the hour, and either the built-in list or Gemini supplies the
+verdict.
 
-## Project layout
+Everything is local and read-only. The only outbound request is the one you ask
+for with `--ai` or `--send`.
 
 ```
 src/
-  index.ts     CLI wiring and the full flow
-  config.ts    local key and webhook storage
-  git.ts       reads git user and parses git blame
+  index.ts     the CLI, the evidence box and the verdicts
+  git.ts       blame, context, and deciding which line deserves it
+  local.ts     picks a built-in verdict and fills it in
   gemini.ts    builds the prompt and calls Gemini
-  webhook.ts   posts the message to Slack or Discord
+  webhook.ts   posts to Slack or Discord
+  config.ts    local key and webhook storage
+lines.json     every built-in verdict, one string each
 ```
-
-## Notes
-
-- Native `fetch` is used for the webhook, so no HTTP client dependency.
-- When Gemini is overloaded or the network hiccups, the call is retried twice
-  before giving up. A rejected API key fails straight away, since no amount of
-  retrying will fix it.
-- Config lives in a plain JSON file, so no extra config library.
-- The one payload trick keeps Slack and Discord support to a single request.
 
 ## Hack on it
 
 ```bash
 git clone https://github.com/zuhairadnansutrisno2502-lab/git-sorry.git
 cd git-sorry
-npm install
-npm run build
-npm link          # now `git-sorry` runs your local build
+npm install && npm run build
+npm link          # `git-sorry` now runs your local build
 npm test
 ```
 
 `npm unlink -g git-sorry` puts things back the way they were.
 
-Issues and pull requests are welcome, especially new personalities for the
-prompt. If the roast made you laugh, a ⭐ keeps Snitchy motivated.
+Pull requests are welcome, and the ones that add jokes get merged fastest. If
+the verdict made you laugh, a ⭐ keeps Snitchy fed.
 
 ## License
 
