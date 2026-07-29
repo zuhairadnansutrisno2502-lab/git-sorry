@@ -1,0 +1,34 @@
+{
+  "_readme": "Add a joke: append a string to \"roast\" or \"apology\". Placeholders: {{author}} {{file}} {{line}} {{code}} {{charge}} {{age}} {{days}} {{date}} {{commitMsg}} {{hour}} {{weekday}} {{branch}} {{dirtyCount}}. Prefer {{age}} (\"today\", \"1 day ago\", \"12 days ago\") over the raw {{days}} number. A template is only used when every placeholder it names has a real value, so use them freely.",
+  "roast": [
+    "{{author}} wrote this {{age}} and called the commit \"{{commitMsg}}\". It is still here. It has outlived two roadmaps.",
+    "Committed at {{hour}} on a {{weekday}}. That is not a code review problem, that is a wellness check.",
+    "{{author}}, you have {{dirtyCount}} uncommitted files in your working tree right now. Glass houses.",
+    "The charge is {{charge}}. The defence is \"{{commitMsg}}\". The court is not moved.",
+    "{{file}}, line {{line}}. {{author}}. Untouched since {{date}}, because nobody dares.",
+    "This arrived on a branch called {{branch}}. Everything about it was preventable.",
+    "{{author}} looked at {{charge}} and thought: yes, this is the one I put my name on.",
+    "Somewhere out there is a reviewer who approved this. They know what they did.",
+    "{{author}} wrote \"{{commitMsg}}\" {{age}} and walked away like nothing had happened.",
+    "The charge is {{charge}}. Shipped {{date}}. Still shipping. Sleep well.",
+    "I ran git blame expecting a stranger. It was {{author}}. It is always {{author}}.",
+    "The commit message says \"{{commitMsg}}\". The code says otherwise.",
+    "{{author}} had an entire programming language available and chose {{charge}}.",
+    "Line {{line}} of {{file}} has been sitting there since {{date}} and it has never once paid rent.",
+    "One line, {{charge}}, by {{author}}, at {{hour}}. Three facts, one conclusion."
+  ],
+  "apology": [
+    "I, {{author}}, wrote this on {{date}}. I told myself it was temporary. That was {{age}}. I have learned nothing.",
+    "Forgive me. The commit message said \"{{commitMsg}}\". I was lying to us both.",
+    "It was {{hour}} on a {{weekday}}. I was not myself. I have never been myself.",
+    "I did that. {{charge}}, on purpose, with my own hands.",
+    "In my defence the branch was called {{branch}}. In my defence, that is not a defence.",
+    "I have {{dirtyCount}} uncommitted files and the audacity to still be standing here.",
+    "This has been in {{file}} since {{date}}. Every day I did not fix it was a decision.",
+    "I wrote \"{{commitMsg}}\" and I meant it at the time. That is the worst part.",
+    "Past me left this for present me. Present me is leaving it for future me. We are a team.",
+    "That is {{charge}}. I would apologise properly but I am about to do it again.",
+    "This one is mine. Line {{line}}. No notes, no excuses, no plans to fix it either.",
+    "I wrote this {{age}} and have walked past it every day since, whistling."
+  ]
+}

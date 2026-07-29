@@ -2,10 +2,23 @@ import { GoogleGenAI } from "@google/genai";
 import type { BlameInfo } from "./git.js";
 
 /** Build the prompt: a self-apology if you blamed yourself, a roast otherwise. */
-export function buildPrompt(currentUser: string, blame: BlameInfo, isSelf: boolean): string {
+export function buildPrompt(
+  currentUser: string,
+  blame: BlameInfo,
+  isSelf: boolean,
+  ctx: Record<string, string> = {},
+): string {
+  // The real commit message and the hour it was written roast better than
+  // anything a model invents, so hand them over when we have them.
+  const extra =
+    (ctx.commitMsg ? `The commit message they wrote was "${ctx.commitMsg}".\n` : "") +
+    (ctx.hour
+      ? `It was committed at ${ctx.hour}${ctx.weekday ? ` on a ${ctx.weekday}` : ""}.\n`
+      : "");
+
   const shared =
     `The offending line of code is:\n\n    ${blame.line}\n\n` +
-    `It was committed by "${blame.author}" on ${blame.date}.\n` +
+    `It was committed by "${blame.author}" on ${blame.date}.\n${extra}` +
     `Write in English. Keep it under 120 words. Return only the message, no preamble.`;
 
   if (isSelf) {
