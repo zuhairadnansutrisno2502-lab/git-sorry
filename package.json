@@ -1,6 +1,6 @@
 {
   "name": "git-sorry",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Your git blame, now with feelings. Run it in any repo with no setup and it finds your worst line, names the culprit and reads out the verdict.",
   "author": "Xianying",
   "repository": {
